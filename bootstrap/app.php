@@ -6,16 +6,10 @@ $request = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
 
 $dispatcher = \FastRoute\simpleDispatcher(
     function (\FastRoute\RouteCollector $r) {
-        $r->addRoute(
-            'GET',
-            '/',
-            'App\Http\Controllers\FrontPageController#show'
-        );
-        $r->addRoute(
-            'GET',
-            '/submit',
-            'App\Http\Controllers\SubmissionController#show'
-        );
+        $routes = include ROOT_DIR . '/routes/web.php';
+        foreach ($routes as $route) {
+            $r->addRoute(...$route);
+        }
     }
 );
 
