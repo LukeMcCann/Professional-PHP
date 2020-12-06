@@ -1,8 +1,5 @@
 <?php declare(strict_types = 1);
 
-use App\Http\Controllers\HelloWorld;
+define('ROOT_DIR', dirname(__DIR__));
 
-require_once dirname(__DIR__) . '/vendor/autoload.php';
-
-$hello = new HelloWorld;
-$hello->announce();
+require_once ROOT_DIR . '/bootstrap/app.php';
